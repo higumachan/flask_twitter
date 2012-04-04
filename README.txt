@@ -1,9 +1,8 @@
 
-flaskprojectのディレクトリに配置する
+flaskprojectのディレクトリにこのモジュールを配置する
 
 
 まずsettings.pyに自分のキーを入れる
-settings.py
 	key = "your cunsumar key"
 	secret = "your cunsumar secret key"
 
@@ -11,16 +10,17 @@ appの最初に
 from flask_twitter.TwitterPlugin import *
 を書き
 
-あとは、Twitterの認証の必要がある関数に
+あとは、Twitterの認証の必要があるViewに
 @twitter_login
 を@app.routeの下に付け足すだけ
-これを付ける関数には必ずapi=Noneという引数が必要
+これを付けるViewには必ずapi=Noneという引数が必要
+これによりViewの中でtweepy(https://github.com/tweepy/tweepy)のapiを使うことができる
 
 
-コールバックになる関数には
+コールバックになるViewには
 @twitter_callback
 を付けること
-あと、コールバックの関数は必ず
+あと、コールバックのViewは必ず
 flask.Responseを返すこと
 
 TODO
