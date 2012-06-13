@@ -23,6 +23,8 @@ def twitter_callback(func):
     def wrapper(*args, **kwards):
         twi = twitter.Twitter(request);
         (key, secret) = twi.oauth_callback(request);
+        api = twi.get_API(key, secret);
+        kwards["api"] = api;
         result = func(*args, **kwards);
         result.set_cookie("twackey", key);
         result.set_cookie("twsckey", secret);
